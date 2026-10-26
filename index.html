@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kế hoạch tăng doanh số theo kênh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#F4F6F5;--card:#FFFFFF;--ink:#16221E;--ink2:#52605A;--line:#DCE3E0;--ok:#0E7C66;--bad:#B3392B;--c0:#0E7C66;--c1:#C2377A;--c2:#E8742A;--c3:#8A63C9;--font:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101815;--card:#18231F;--ink:#EAF1EE;--ink2:#9DAEA7;--line:#2A3833;--ok:#38C2A0;--bad:#F08A7C;--c0:#38C2A0;--c1:#F2719F;--c2:#F4975A;--c3:#B79CE8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101815;--card:#18231F;--ink:#EAF1EE;--ink2:#9DAEA7;--line:#2A3833;--ok:#38C2A0;--bad:#F08A7C;--c0:#38C2A0;--c1:#F2719F;--c2:#F4975A;--c3:#B79CE8;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 var(--font)}
+.w{max-width:980px;margin:0 auto;padding:22px 16px 60px}
+h1{font-size:26px;line-height:1.2;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
+h2{font-size:19px;margin:36px 0 4px;font-weight:700}
+.sub{color:var(--ink2);margin:0 0 12px;max-width:64ch}
+.sm{font-size:13px;color:var(--ink2)}
+.ctl4{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+label{display:block;font-size:12.5px;color:var(--ink2);margin-bottom:3px}
+select,input[type=number],input[type=date],input[type=text]{width:100%;font:500 14px var(--font);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 9px}
+.lg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 10px}
+.sum div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.sum span{font-size:13px;color:var(--ink2)}
+.sum b{display:block;font-size:21px;line-height:1.2;font-weight:700;margin:2px 0}
+.sum small{font-size:12.5px;color:var(--ink2)}
+.vd{background:var(--card);border-left:4px solid var(--ink);border-radius:6px;padding:10px 14px;margin:0 0 10px;font-size:14.5px}
+details{font-size:13.5px;color:var(--ink2);margin-bottom:6px}
+summary{cursor:pointer;font-weight:600;color:var(--ink)}
+details p{margin:6px 0}
+.pos{color:var(--ok)}.neg{color:var(--bad)}
+.mr{display:grid;grid-template-columns:110px minmax(120px,170px) 1fr auto;gap:10px;align-items:end;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:8px}
+.mr.on{border-color:var(--ink)}
+.mr span{padding-bottom:9px}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.chh{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.chh b{font-size:16px}
+.bd{font-size:12.5px;font-weight:600;border-radius:999px;padding:2px 10px;border:1px solid currentColor}
+.n3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 4px}
+.n3 span{font-size:12.5px;color:var(--ink2);display:block}
+.n3 b{font-size:19px;display:block;line-height:1.25}
+.n3 small{font-size:12.5px;color:var(--ink2)}
+.bar{position:relative;height:16px;background:var(--bg);border-radius:4px;margin:10px 0 8px}
+.bar i{position:absolute;top:0;height:100%;display:block}
+.bar .g{opacity:.38}
+.bar u{position:absolute;top:-4px;height:24px;width:2px;background:var(--ink)}
+.tg{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-top:8px}
+.tg input{width:100%;accent-color:var(--ink)}
+.it{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.it.on{border-color:var(--ink)}
+.it .hd{display:flex;justify-content:space-between;gap:6px 10px;align-items:baseline;flex-wrap:wrap}
+.it p{margin:2px 0 8px;font-size:13.5px;color:var(--ink2)}
+.chip{display:inline-block;font-size:12.5px;color:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:1px 9px 1px 7px;margin-left:4px;white-space:nowrap}
+.chip .dot{margin-right:5px}
+.in{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px;max-width:520px}
+.ef{font-size:13.5px;margin:0 0 8px}
+.wk{display:flex;gap:6px;flex-wrap:wrap}
+.wk button{font:500 13px var(--font);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;min-height:36px}
+.wk button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+.cwk{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 10px}
+.cwk button{font:500 13px var(--font);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;min-height:36px}
+.cwk button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn{font:600 14px var(--font);color:var(--bg);background:var(--ink);border:0;border-radius:8px;padding:9px 14px;cursor:pointer}
+.btn.o{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.cal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.cal>div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.cal h3{font-size:14.5px;margin:0 0 8px}
+.cal ul{margin:0;padding:0}
+.cal li{font-size:13.5px;margin:0 0 6px;list-style:none}
+.tag{font-size:11.5px;font-weight:600;border:1px solid var(--line);border-radius:5px;padding:1px 6px;margin-right:6px;color:var(--ink2)}
+.note{font-size:13px;color:var(--ink2);margin-top:22px;max-width:70ch}
+@media (max-width:620px){.sum{grid-template-columns:1fr 1fr}.sum b{font-size:18px}.mr{grid-template-columns:1fr 1fr}.mr span{grid-column:1/-1;padding:0}.n3 b{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>Kế hoạch tăng doanh số theo kênh</h1>
+<p class="sub">Làm theo 4 bước: đặt mục tiêu, chọn khuyến mãi, chọn hoạt động social, rồi xem lịch 4 tuần. Kết quả cập nhật ngay ở phần tóm tắt. Doanh số hiện tại lấy từ báo cáo bán hàng đến 20/10/2026.</p>
+<div class="ctl4">
+<div><label for="sc">Cửa hàng</label><select id="sc"><option value="all">Cả chuỗi 4 cửa hàng</option><option value="0">Thảo Điền</option><option value="1">Sư Vạn Hạnh</option><option value="2">CMT8</option><option value="3">Phan Xích Long</option></select></div>
+<div><label for="bs">Lấy doanh số hiện tại từ</label><select id="bs"><option value="sep">Tháng 9 (30 ngày)</option><option value="oct">Tháng 10 quy ra 30 ngày</option></select></div>
+<div><label for="sd">Tuần 1 bắt đầu</label><input type="date" id="sd" value="2026-11-02"></div>
+<div><label for="mg">Biên lãi gộp (%)</label><input type="number" id="mg" value="65" min="0" max="100"></div>
+</div>
+<div class="lg" aria-label="Chú thích màu kênh"><span><span class="dot" style="background:var(--c0)"></span>Tại quầy</span><span><span class="dot" style="background:var(--c1)"></span>GrabFood</span><span><span class="dot" style="background:var(--c2)"></span>ShopeeFood</span><span><span class="dot" style="background:var(--c3)"></span>Online / App khác</span></div>
+
+<h2>Tóm tắt kế hoạch</h2>
+<div class="sum" id="sum"></div>
+<p class="vd" id="vd"></p>
+<details><summary>Cách đọc các con số</summary>
+<p><b>Hiện tại</b>: doanh thu thật của kênh trong một tháng (đã trừ giảm giá), lấy từ kỳ bạn chọn ở “Lấy doanh số hiện tại từ”.</p>
+<p><b>Kế hoạch</b>: doanh thu dự kiến mỗi tháng nếu chạy đúng các hoạt động đã bật, theo mức tăng bạn nhập ở từng hoạt động.</p>
+<p><b>Mục tiêu</b>: doanh thu hiện tại cộng thêm phần trăm bạn đặt.</p>
+<p><b>Lãi gộp tăng thêm</b> = doanh thu tăng thêm × biên lãi gộp − chi phí khuyến mãi (gồm giá vốn quà tặng) − ngân sách social. Ngân sách social tính chung cho cả chuỗi, không chia cho từng kênh.</p>
+<p><b>Chương trình Mua – Tặng</b>: số đơn tham gia = số đơn hiện tại của kênh × % tham gia. Doanh thu tăng = số đơn tham gia × phần khách mua thêm. Chi phí = giá trị quà × (1 − biên lãi gộp), tức giá vốn của quà.</p></details>
+
+<h2>Bước 1. Đặt mục tiêu</h2>
+<p class="sub">Nhập tổng doanh thu mong muốn của tháng rồi bấm “Áp dụng cho kênh”, hoặc kéo thanh mục tiêu riêng từng kênh bên dưới.</p>
+<div id="mt"></div><p class="sm" id="mtr" style="margin:6px 0 14px"></p>
+<div id="chs"></div>
+
+<h2>Bước 2. Chọn khuyến mãi</h2>
+<p class="sm" id="st2" style="margin:0 0 8px"></p>
+<div id="km"></div>
+<h3 style="font-size:16px;margin:24px 0 4px">Chương trình Mua – Tặng</h3>
+<p class="sm" style="margin:0 0 8px">Tự tạo chương trình theo 3 kiểu: mua số lượng X tặng số lượng Y, mua món A tặng món B, hoặc mua đơn từ mức X tặng quà trị giá Y. Chi phí tính theo giá trị quà tặng thực tế nên không cần đoán phần trăm.</p>
+<div id="cu"></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:end;margin-top:6px"><div><label for="ctype">Kiểu chương trình</label><select id="ctype"><option value="qty">Mua X ly tặng Y ly</option><option value="item">Mua món A tặng món B</option><option value="spend">Mua đơn từ X đồng tặng quà Y đồng</option></select></div><button class="btn" id="cadd">Thêm chương trình</button></div>
+
+<h2>Bước 3. Chọn hoạt động social</h2>
+<p class="sm" id="st3" style="margin:0 0 8px"></p>
+<div id="so"></div>
+<div style="display:flex;gap:8px;margin-top:6px"><button class="btn" id="sug">Gợi ý chọn</button><button class="btn o" id="clr">Xóa chọn</button></div>
+
+<h2>Bước 4. Lịch 4 tuần</h2>
+<div class="cal" id="cal"></div>
+<p class="note">Các mức tăng đơn, chi phí và ngân sách là giả định ban đầu để lập kế hoạch, hãy chỉnh theo kết quả thử thực tế. Số đơn tăng tối đa +80% mỗi kênh. Hoạt động chạy ít hơn 4 tuần được tính theo tỷ lệ số tuần, cả hiệu quả lẫn ngân sách. ShopeeFood và Online / App khác chỉ có vài chục đơn mỗi tháng nên phần trăm tăng dao động mạnh.</p>
+</div>
+<script>
+const B={"all":[[335674181,2008,384069100,224390076,1270],[49625591,294,56616000,44278290,227],[2627000,16,2627000,1834362,14],[1239700,7,1450800,607000,4]],"0":[[59691233,421,66563000,44240962,327],[15610587,99,17648000,21227499,98],[0,0,0,0,0],[0,0,0,217000,1]],"1":[[122473527,609,137430000,80628262,372],[31175004,176,35842000,17103991,98],[2627000,16,2627000,1834362,14],[0,0,0,320000,1]],"2":[[65284132,504,73756100,49552216,340],[2840000,19,3126000,3147000,21],[0,0,0,0,0],[0,0,0,0,0]],"3":[[88225289,474,106320000,49968636,231],[0,0,0,2799800,10],[0,0,0,0,0],[1239700,7,1450800,70000,2]]};
+const CH=['Tại quầy','GrabFood','ShopeeFood','Online / App khác'],COL=['var(--c0)','var(--c1)','var(--c2)','var(--c3)'];
+const KM=[
+{id:'k1',n:'Combo 2 ly giá tốt',ch:[0,1,2],lift:0,aov:8,cost:6,d:'Mua 2 ly giảm 10% hoặc tặng topping, kéo giá trị mỗi đơn lên.'},
+{id:'k2',n:'Giờ vàng giảm 10%',ch:[0],lift:8,aov:0,cost:3,d:'Giảm giá khung giờ vắng khách để dồn thêm đơn vào giờ thấp điểm.'},
+{id:'k3',n:'Tặng topping khi mua size L',ch:[0],lift:2,aov:5,cost:3,d:'Khuyến khích chọn size lớn và thêm topping.'},
+{id:'k4',n:'Thẻ tích điểm, QR thành viên',ch:[0,3],lift:4,aov:0,cost:2,d:'Tích điểm để khách quay lại, thu số điện thoại cho Zalo.'},
+{id:'k5',n:'Voucher cửa hàng trên GrabFood',ch:[1],lift:18,aov:-2,cost:9,d:'Giảm 15% do cửa hàng chịu, hiện nổi bật trên trang quán.'},
+{id:'k6',n:'Freeship ShopeeFood từ 99k',ch:[2],lift:20,aov:6,cost:6,d:'Đặt ngưỡng freeship để nâng giá trị đơn.'},
+{id:'k7',n:'Voucher đặt trực tiếp qua app, Zalo',ch:[3],lift:10,aov:0,cost:5,d:'Đưa khách đặt riêng về kênh của quán thay vì nền tảng.'}];
+const SC=[
+{id:'s1',n:'Video ngắn TikTok, Reels',ch:[0,1,2],lift:5,bud:6,d:'3 video mỗi tuần về ly bán chạy và thạch Lasams.'},
+{id:'s2',n:'Zalo OA gửi voucher khách cũ',ch:[0,3],lift:4,bud:1.5,d:'Nhắn khách đã có số điện thoại vào cuối tuần.'},
+{id:'s3',n:'Quảng cáo Facebook bán kính 2km',ch:[0,1,2],lift:6,bud:8,d:'Nhắm quanh từng cửa hàng, dẫn về menu và voucher.'},
+{id:'s4',n:'KOC, review người địa phương',ch:[0,1,2],lift:4,bud:5,d:'Mời người có ảnh hưởng gần khu vực đến uống và đăng bài.'},
+{id:'s5',n:'Làm mới ảnh và mô tả món trên Grab, Shopee',ch:[1,2],lift:8,bud:1,d:'Ảnh món đẹp, mô tả rõ, đưa món chủ lực lên đầu menu.'},
+{id:'s6',n:'Nhóm cộng đồng, ảnh check-in',ch:[0],lift:3,bud:1.5,d:'Khuyến khích khách đăng ảnh để nhận ưu đãi lần sau.'}];
+let ALL=KM.concat(SC);
+let S={scope:'all',base:'sep',start:'2026-11-02',margin:65,tgt:[5,20,50,30],on:{},v:{},mt:{},mA:'',cu:[],nx:0};let skipMT=false;
+ALL.forEach(x=>{S.on[x.id]=[0,0,0,0];S.v[x.id]={lift:x.lift,aov:x.aov||0,cost:x.cost||0,bud:x.bud||0}});
+try{const t=JSON.parse(localStorage.getItem('kh-doanh-so')||'null');if(t&&t.on)S=Object.assign(S,t)}catch(e){}
+if(!S.cu||!S.cu.length)S.cu=[mkCu('qty'),mkCu('item'),mkCu('spend')];
+S.cu.forEach(x=>{if(!S.on[x.id])S.on[x.id]=[0,0,0,0]});ALL=KM.concat(S.cu,SC);
+const $=id=>document.getElementById(id);
+const fm=n=>{const a=Math.abs(n),s=n<0?'−':'';return s+(a>=1e9?(a/1e9).toFixed(2).replace('.',',')+' tỷ':a>=1e6?(a/1e6).toFixed(1).replace('.',',')+' tr':Math.round(a/1e3)+'k')};
+const pc=n=>(n>=0?'+':'−')+Math.abs(n).toFixed(1).replace('.',',')+'%';
+const wks=x=>S.on[x.id].reduce((p,q)=>p+q,0);
+function save(){try{localStorage.setItem('kh-doanh-so',JSON.stringify(S))}catch(e){}}
+function base(c){const a=B[S.scope][c];return S.base==='sep'?{r:a[0],n:a[1]}:{r:a[3]*1.5,n:a[4]*1.5}}
+function plan(c,only){
+  const b=base(c);let L=0,A=0,cp=0,cd=0,cg=0;
+  ALL.filter(x=>x.ch.includes(c)&&(!only||x.id===only)).forEach(x=>{const w=wks(x)/4;if(!w)return;if(x.type){const e=cuEff(x,c);cd+=w*e.d;cg+=w*e.g;return}const v=S.v[x.id];L+=w*v.lift/100;A+=w*(v.aov||0)/100;if(x.cost!==undefined)cp+=w*(v.cost||0)/100});
+  L=Math.min(L,.8);const r=b.r*(1+L)*(1+A)+cd;
+  return{b:b.r,r:r,gain:r-b.r,promo:cp*r+cg,profit:(r-b.r)*S.margin/100-cp*r-cg}
+}
+function mkCu(t){S.nx=(S.nx||0)+1;const b={id:'u'+S.nx,type:t};
+  if(t==='qty')return Object.assign(b,{n:'Mua 2 ly tặng 1 ly',X:2,Y:1,q0:1,u:40000,p:10,ch:[0]});
+  if(t==='item')return Object.assign(b,{n:'Mua món chính tặng topping',A:'Món chính',pa:45000,B:'Topping',pb:10000,p:15,ch:[0,1]});
+  return Object.assign(b,{n:'Đơn từ 100k tặng quà 15k',X:100000,Y:15000,p:12,ch:[0,1,2]})}
+function cuEff(x,c){const b=base(c);if(!b.n)return{d:0,g:0};const part=b.n*Math.min(100,x.p)/100;let d,gv;
+  if(x.type==='qty'){d=Math.max(0,x.X-x.q0)*x.u;gv=x.Y*x.u}
+  else if(x.type==='item'){d=x.pa;gv=x.pb}
+  else{d=Math.max(0,x.X-b.r/b.n);gv=x.Y}
+  return{d:part*d,g:part*gv*(1-S.margin/100)}}
+const socialTotal=()=>SC.reduce((a,x)=>a+wks(x)/4*S.v[x.id].bud*1e6,0);
+function weekLabel(i,short){const d=new Date(S.start+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+7*i);const e=new Date(d);e.setUTCDate(e.getUTCDate()+6);const f=x=>String(x.getUTCDate()).padStart(2,'0')+'/'+String(x.getUTCMonth()+1).padStart(2,'0');return short?f(d):f(d)+'–'+f(e)}
+const dots=ch=>ch.map(c=>'<span class="chip"><span class="dot" style="background:'+COL[c]+'"></span>'+CH[c]+'</span>').join('');
+const baseName=()=>S.base==='sep'?'tháng 9':'tháng 10 (quy ra 30 ngày)';
+function eff(x){const w=wks(x);if(!w)return 'Chưa bật. Bấm tuần bên dưới để thêm vào kế hoạch.';const g=x.ch.reduce((a,c)=>a+plan(c,x.id).gain,0),cost=(x.cost!==undefined||x.type)?x.ch.reduce((a,c)=>a+plan(c,x.id).promo,0):w/4*S.v[x.id].bud*1e6;return 'Chạy '+w+' tuần: doanh thu tăng khoảng <b>'+fm(g)+'</b> mỗi tháng, chi phí <b>'+fm(cost)+'</b>.'}
+function buildLists(){
+  const row=(x,km)=>{const v=S.v[x.id];
+    const ins=km?[['lift','Tăng số đơn (%)'],['aov','Tăng giá trị mỗi đơn (%)'],['cost','Chi phí giảm giá (% doanh thu)']]:[['lift','Tăng số đơn (%)'],['bud','Ngân sách 4 tuần (triệu đồng)']];
+    return '<div class="it" id="r-'+x.id+'"><div class="hd"><b>'+x.n+'</b><span>'+dots(x.ch)+'</span></div><p>'+x.d+'</p><div class="in">'+ins.map(i=>'<div><label>'+i[1]+'</label><input type="number" step="any" data-id="'+x.id+'" data-k="'+i[0]+'" value="'+v[i[0]]+'"></div>').join('')+'</div><p class="ef" id="e-'+x.id+'"></p><div class="wk">'+[0,1,2,3].map(i=>'<button data-id="'+x.id+'" data-w="'+i+'"></button>').join('')+'</div></div>'};
+  $('km').innerHTML=KM.map(x=>row(x,1)).join('');buildCu();$('so').innerHTML=SC.map(x=>row(x,0)).join('');
+  $('chs').innerHTML=CH.map((n,c)=>'<div class="ch"><div class="chh"><b><span class="dot" style="background:'+COL[c]+'"></span>'+n+'</b><span class="bd" id="cs'+c+'"></span></div><div class="n3"><div><span>Hiện tại</span><b id="ca'+c+'"></b><small id="cb2'+c+'"></small></div><div><span>Kế hoạch</span><b id="cp'+c+'"></b><small id="cq'+c+'"></small></div><div><span>Mục tiêu</span><b id="ct'+c+'"></b><small id="cu'+c+'"></small></div></div><div class="bar" id="cb'+c+'"></div><div class="tg"><span class="sm">Đặt mục tiêu tăng</span><input type="range" min="0" max="100" step="1" data-t="'+c+'" aria-label="Mục tiêu tăng '+n+'" value="'+S.tgt[c]+'"><b id="cv'+c+'"></b></div><p class="sm" id="cx'+c+'" style="margin:8px 0 0"></p></div>').join('');
+}
+function calc(){
+  let R0=0,R1=0,T=0,promo=0;
+  CH.forEach((n,c)=>{
+    const p=plan(c),b=p.b,t=b*(1+S.tgt[c]/100),mx=Math.max(p.r,t,b)*1.06||1,miss=t-p.r;
+    R0+=b;R1+=p.r;T+=t;promo+=p.promo;
+    $('cb'+c).innerHTML='<i style="left:0;width:'+b/mx*100+'%;background:'+COL[c]+'"></i><i class="g" style="left:'+b/mx*100+'%;width:'+Math.max(p.gain,0)/mx*100+'%;background:'+COL[c]+'"></i><u style="left:'+t/mx*100+'%"></u>';
+    $('ca'+c).textContent=fm(b);$('cb2'+c).textContent='mỗi tháng, '+baseName();
+    $('cp'+c).textContent=fm(p.r);$('cq'+c).textContent=b?pc(p.gain/b*100)+' so với hiện tại':'';
+    $('ct'+c).textContent=fm(t);$('cu'+c).textContent='tăng '+S.tgt[c]+'% so với hiện tại';
+    $('cv'+c).textContent='+'+S.tgt[c]+'%';
+    const ok=miss<=0;$('cs'+c).textContent=ok?'Đạt mục tiêu':'Thiếu '+fm(miss);$('cs'+c).className='bd '+(ok?'pos':'neg');
+    $('cx'+c).textContent=ok?'Kế hoạch vượt mục tiêu '+fm(-miss)+'.':'Kế hoạch chưa đủ. Bật thêm hoạt động có nhãn “'+n+'” ở Bước 2 và 3, hoặc hạ mục tiêu.';
+  });
+  const soc=socialTotal(),cost=promo+soc,profit=(R1-R0)*S.margin/100-cost;
+  $('sum').innerHTML='<div><span>Doanh thu hiện tại</span><b>'+fm(R0)+'</b><small>mỗi tháng, '+baseName()+'</small></div><div><span>Doanh thu theo kế hoạch</span><b class="'+(R1>=R0?'pos':'neg')+'">'+fm(R1)+'</b><small>'+(R0?pc((R1/R0-1)*100):'')+' so với hiện tại</small></div><div><span>Tổng chi phí</span><b>'+fm(cost)+'</b><small>khuyến mãi '+fm(promo)+', social '+fm(soc)+'</small></div><div><span>Lãi gộp tăng thêm</span><b class="'+(profit>=0?'pos':'neg')+'">'+fm(profit)+'</b><small>đã trừ chi phí</small></div>';
+  const tg=S.mA&&S.mt[S.mA]?S.mt[S.mA]*1e6:0;
+  $('vd').innerHTML=(R1===R0?'Chưa có hoạt động nào được bật. Bấm “Gợi ý chọn” hoặc chọn tuần ở Bước 2 và 3.':'Kế hoạch này đưa doanh thu từ <b>'+fm(R0)+'</b> lên <b>'+fm(R1)+'</b> mỗi tháng ('+pc((R1/R0-1)*100)+'), tốn <b>'+fm(cost)+'</b> chi phí và còn lại <b class="'+(profit>=0?'pos':'neg')+'">'+fm(profit)+'</b> lãi gộp tăng thêm.')+(tg?' So với mục tiêu tháng đã đặt ('+fm(tg)+'), kế hoạch '+(R1>=tg?'<b class="pos">đạt</b>':'<b class="neg">còn thiếu '+fm(tg-R1)+'</b>')+'.':'');
+  const st='Kế hoạch hiện đạt '+(T?(R1/T*100).toFixed(0):0)+'% tổng mục tiêu các kênh ('+fm(R1)+' trên '+fm(T)+').';
+  $('st2').textContent=st;$('st3').textContent=st;
+  ALL.forEach(x=>{const r=$('r-'+x.id);r.classList.toggle('on',wks(x)>0);$('e-'+x.id).innerHTML=eff(x);r.querySelectorAll('.wk button').forEach((b,i)=>{b.classList.toggle('on',!!S.on[x.id][i]);b.setAttribute('aria-pressed',!!S.on[x.id][i]);b.textContent='Tuần '+(i+1)+', '+weekLabel(i,1)})});
+  $('cal').innerHTML=[0,1,2,3].map(i=>{const a=ALL.filter(x=>S.on[x.id][i]);return '<div><h3>Tuần '+(i+1)+', '+weekLabel(i)+'</h3>'+(a.length?'<ul>'+a.map(x=>'<li><span class="tag">'+(x.type?'Mua tặng':x.cost!==undefined?'Khuyến mãi':'Social')+'</span>'+x.n+'</li>').join('')+'</ul>':'<p class="sm" style="margin:0">Chưa có hoạt động. Bấm tuần ở Bước 2 và 3 để thêm.</p>')+'</div>'}).join('');
+  if(!skipMT)renderMT();else updMT();
+  save();
+}
+function monthKeys(){const d=new Date(S.start+'T00:00:00Z'),a=[];for(let i=0;i<3;i++){const x=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+i,1));a.push({k:x.getUTCFullYear()+'-'+String(x.getUTCMonth()+1).padStart(2,'0'),l:'Tháng '+(x.getUTCMonth()+1)+'/'+x.getUTCFullYear()})}return a}
+function baseTotal(){return CH.reduce((a,n,c)=>a+base(c).r,0)}
+function mtText(v){const bt=baseTotal();if(!v)return 'Doanh thu hiện tại '+fm(bt)+' mỗi tháng.';const g=(v*1e6/bt-1)*100;return (g>=0?'Cần tăng ':'Thấp hơn hiện tại ')+Math.abs(g).toFixed(1).replace('.',',')+'% so với hiện tại ('+fm(bt)+').'}
+function mtRes(){const t=S.mA&&S.mt[S.mA]?S.mt[S.mA]*1e6:0;if(!t)return 'Nhập mục tiêu rồi bấm “Áp dụng cho kênh”.';const pt=CH.reduce((a,n,c)=>a+plan(c).r,0),g=(t/baseTotal()-1)*100;return 'Kế hoạch đạt <b class="'+(pt>=t?'pos':'neg')+'">'+fm(pt)+'</b> trên mục tiêu '+fm(t)+' ('+(pt/t*100).toFixed(0)+'%).'+(pt>=t?'':' Còn thiếu <b class="neg">'+fm(t-pt)+'</b>.')+(g>100?' Mục tiêu cần tăng hơn 100%, thanh kéo từng kênh dừng ở +100%.':'')}
+function renderMT(){$('mt').innerHTML=monthKeys().map(m=>{const v=S.mt[m.k],on=S.mA===m.k;return '<div class="mr'+(on?' on':'')+'"><b>'+m.l+'</b><div><label>Mục tiêu doanh thu (triệu đồng)</label><input type="number" min="0" step="any" data-mt="'+m.k+'" value="'+(v||'')+'" placeholder="'+Math.round(baseTotal()/1e6)+'"></div><span class="sm" id="mtt-'+m.k+'">'+mtText(v)+'</span><button class="btn'+(on?'':' o')+'" id="mtb-'+m.k+'" data-ap="'+m.k+'"'+(v?'':' disabled')+'>'+(on?'Đang áp dụng':'Áp dụng cho kênh')+'</button></div>'}).join('');$('mtr').innerHTML=mtRes()}
+function updMT(){monthKeys().forEach(m=>{const v=S.mt[m.k];$('mtt-'+m.k).textContent=mtText(v);$('mtb-'+m.k).disabled=!v});$('mtr').innerHTML=mtRes()}
+function applyMT(k){const v=S.mt[k];if(!v)return;S.mA=k;const g=Math.max(0,Math.min(100,Math.round((v*1e6/baseTotal()-1)*100)));CH.forEach((n,c)=>{S.tgt[c]=g});document.querySelectorAll('input[data-t]').forEach(i=>{i.value=g});calc()}
+function buildCu(){
+  const f=(x,k,l,t)=>'<div><label>'+l+'</label><input type="'+(t||'number')+'" step="any" data-cu="'+x.id+'" data-f="'+k+'" value="'+String(x[k]).replace(/"/g,'&quot;')+'"></div>';
+  const F={qty:x=>[f(x,'X','Mua (ly)'),f(x,'Y','Tặng (ly)'),f(x,'q0','Số ly khách thường mua'),f(x,'u','Giá một ly (đồng)'),f(x,'p','% đơn tham gia')],
+    item:x=>[f(x,'A','Món A (mua)','text'),f(x,'pa','Giá món A (đồng)'),f(x,'B','Món B (tặng)','text'),f(x,'pb','Giá món B (đồng)'),f(x,'p','% đơn tham gia')],
+    spend:x=>[f(x,'X','Đơn từ (đồng)'),f(x,'Y','Quà tặng trị giá (đồng)'),f(x,'p','% đơn tham gia')]};
+  const DS={qty:'Mua X ly được tặng Y ly. Khách tham gia mua nhiều ly hơn thường ngày, quán chịu giá vốn của ly tặng.',item:'Mua món A được tặng món B. Khách tham gia thêm món A vào đơn, quán chịu giá vốn của món B.',spend:'Đơn từ mức X đồng được tặng quà trị giá Y đồng. Khách thêm món để đạt ngưỡng, quán chịu giá vốn của quà.'};
+  $('cu').innerHTML=S.cu.map(x=>'<div class="it" id="r-'+x.id+'"><div class="hd"><div style="flex:1;min-width:180px"><input type="text" data-cu="'+x.id+'" data-f="n" value="'+x.n.replace(/"/g,'&quot;')+'" aria-label="Tên chương trình" style="font-weight:600"></div><button class="btn o" data-cdel="'+x.id+'">Xóa</button></div><p>'+DS[x.type]+'</p><label>Kênh áp dụng</label><div class="cwk">'+CH.map((n,c)=>'<button data-cch="'+x.id+'" data-k="'+c+'" class="'+(x.ch.includes(c)?'on':'')+'" aria-pressed="'+x.ch.includes(c)+'"><span class="dot" style="background:'+COL[c]+'"></span>'+n+'</button>').join('')+'</div><div class="in">'+F[x.type](x).join('')+'</div><p class="ef" id="e-'+x.id+'"></p><div class="wk">'+[0,1,2,3].map(i=>'<button data-id="'+x.id+'" data-w="'+i+'"></button>').join('')+'</div></div>').join('');
+}
+function suggest(){ALL.forEach(x=>{S.on[x.id]=[1,1,1,1];let p=x.ch.reduce((a,c)=>a+plan(c,x.id).profit,0);if(x.cost===undefined&&!x.type)p-=S.v[x.id].bud*1e6;if(p<=0)S.on[x.id]=[0,0,0,0]});calc()}
+document.addEventListener('click',e=>{
+  const ap=e.target.closest('button[data-ap]');if(ap&&!ap.disabled){applyMT(ap.dataset.ap);return}
+  const dl=e.target.closest('button[data-cdel]');if(dl){S.cu=S.cu.filter(q=>q.id!==dl.dataset.cdel);delete S.on[dl.dataset.cdel];ALL=KM.concat(S.cu,SC);buildCu();calc();return}
+  const cc=e.target.closest('button[data-cch]');if(cc){const x=S.cu.find(q=>q.id===cc.dataset.cch),k=+cc.dataset.k,i=x.ch.indexOf(k);if(i>=0){if(x.ch.length>1)x.ch.splice(i,1)}else x.ch.push(k);x.ch.sort();buildCu();calc();return}
+  const w=e.target.closest('button[data-w]');if(w){const a=S.on[w.dataset.id],i=+w.dataset.w;a[i]=a[i]?0:1;calc()}
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.id&&t.dataset.k){S.v[t.dataset.id][t.dataset.k]=parseFloat(t.value)||0;calc()}
+  else if(t.dataset.cu){const x=S.cu.find(q=>q.id===t.dataset.cu);if(x){x[t.dataset.f]=t.type==='number'?(parseFloat(t.value)||0):t.value;calc()}}
+  else if(t.dataset.mt){S.mt[t.dataset.mt]=parseFloat(t.value)||0;skipMT=true;calc();skipMT=false}
+  else if(t.dataset.t!==undefined){S.tgt[+t.dataset.t]=+t.value;calc()}
+  else if(t.id==='sc'){S.scope=t.value;calc()}
+  else if(t.id==='bs'){S.base=t.value;calc()}
+  else if(t.id==='sd'&&t.value){S.start=t.value;calc()}
+  else if(t.id==='mg'){S.margin=Math.min(100,Math.max(0,parseFloat(t.value)||0));calc()}
+});
+$('sug').onclick=suggest;
+$('cadd').onclick=()=>{const x=mkCu($('ctype').value);S.cu.push(x);S.on[x.id]=[0,0,0,0];ALL=KM.concat(S.cu,SC);buildCu();calc()};
+$('clr').onclick=()=>{ALL.forEach(x=>{S.on[x.id]=[0,0,0,0]});calc()};
+$('sc').value=S.scope;$('bs').value=S.base;$('sd').value=S.start;$('mg').value=S.margin;
+buildLists();
+if(!ALL.some(x=>wks(x)>0))suggest();else calc();
+</script>
+</body>
+</html>
